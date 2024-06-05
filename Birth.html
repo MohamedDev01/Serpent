@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amazing Boy Mo Birthday</title>
+    <style>
+        @font-face {
+            font-family: 'Axiforma';
+            src: url('https://example.com/path-to-your-font/Axiforma-Regular.woff2') format('woff2'),
+                 url('https://example.com/path-to-your-font/Axiforma-Regular.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #87ceeb; 
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            margin-bottom: 50px;
+            color: #ffffff;
+            text-shadow: 2px 2px 4px #000000;
+            font-family: 'Axiforma', sans-serif;
+        }
+
+        .candle {
+            position: relative;
+            width: 30px;
+            height: 150px;
+            background-color: #ff4500;
+            border-radius: 15px;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
+            margin-top: 20px;
+        }
+
+        .candle::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            width: 6px;
+            height: 20px;
+            background-color: #8b4513;
+            border-radius: 3px;
+            margin-left: -3px;
+        }
+
+        .flame {
+            position: absolute;
+            top: -50px;
+            left: 50%;
+            width: 20px;
+            height: 50px;
+            margin-left: -10px;
+            background: radial-gradient(circle at 50% 50%, #ffda70, #ff4500 70%);
+            border-radius: 50% 50% 50% 50%;
+            transform-origin: center bottom;
+            animation: flicker 0.1s infinite alternate, wave 1s infinite ease-in-out;
+        }
+
+        @keyframes flicker {
+            0% { opacity: 1; }
+            50% { opacity: 0.8; }
+            100% { opacity: 1; }
+        }
+
+        @keyframes wave {
+            0% { transform: rotate(-5deg) scaleY(1.1); }
+            25% { transform: rotate(5deg) scaleY(1); }
+            50% { transform: rotate(-5deg) scaleY(1.1); }
+            75% { transform: rotate(5deg) scaleY(1); }
+            100% { transform: rotate(-5deg) scaleY(1.1); }
+        }
+
+        .candle-body {
+            position: relative;
+            top: 20px;
+            width: 30px;
+            height: 130px;
+            background-color: #ff4500;
+            border-radius: 15px;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #ff4500;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: 'Axiforma', sans-serif;
+        }
+
+        button:hover {
+            background-color: #e03e00;
+        }
+
+        .message {
+            font-size: 72px;
+            color: #ff0000;
+            text-shadow: 2px 2px 4px #000000;
+            font-family: 'Axiforma', sans-serif;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="birthdayMessage">Hello World It is my birthday</h1>
+    <div class="candle">
+        <div class="flame"></div>
+        <div class="candle-body"></div>
+    </div>
+    <button onclick="extinguishFlame()">Éteindre la bougie</button>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <script>
+        function extinguishFlame() {
+            document.querySelector('.flame').style.display = 'none';
+            const messageElement = document.getElementById('birthdayMessage');
+            messageElement.textContent = '23 ANS';
+            messageElement.classList.add('message');
+
+            // Lancer les confettis
+            confetti({
+                particleCount: 200,
+                spread: 70,
+                origin: { y: 0.6 }
+            });
+        }
+    </script>
+</body>
+</html>
